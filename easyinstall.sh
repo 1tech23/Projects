@@ -10,14 +10,14 @@ echo "Continuing with the program."
 
 case $yn_1 in
 [Yy]* ) echo "Continuing the program.";;
-[Nn]* ) echo "You did not accept the statements. Stopping program..."; done;;
+[Nn]* ) echo "You did not accept the statements. Stopping program..."; exit;;
 esac
 
 read -p "Continue? Y or N" yn_2
 
 case $yn_2 in
 [Yy]* ) echo "Continuing.";;
-[Nn]* ) echo "Stopping program..."; done;;
+[Nn]* ) echo "Stopping program..."; exit;;
 * ) echo "Please answer yes or no.";;
 esac
 
@@ -31,7 +31,7 @@ read -p "Is this the correct disk to write to? $disk_1 Yy or Nn Before you press
 
 case $yn_3 in
 [Yy]* ) echo "Continuing installation.";;
-[Nn]* ) echo "You decided that $disk_1 is the wrong disk. To continue with this installer, run it again. Stopping program..."; done;;
+[Nn]* ) echo "You decided that $disk_1 is the wrong disk. To continue with this installer, run it again. Stopping program..."; exit;;
 * ) echo "You must choose either Y or N";;
 esac
 
@@ -39,7 +39,7 @@ read -p "Installing Arch Linux to this drive will erase all data from the disk. 
 
 case $yn_4 in
 [Yy]* ) echo "Continuing installation. Beginning installation to $disk_1";;
-[Nn]* ) echo "Stopping program..."; done;;
+[Nn]* ) echo "Stopping program..."; exit;;
 * ) echo "You must choose either Y or N.";;
 esac
 
@@ -146,7 +146,7 @@ iwctl '
 station $netdev1 connect net_1
 station $netdev1 show
 exit
-'
+';
 ;;
 * ) echo "You must choose either Y or N.";;
 esac
@@ -266,7 +266,8 @@ grub-mkconfig -o /boot/grub/grub.cfg;;
 [Nn]* ) echo "Setting up GRUB for non-UEFI firmware (Legacy).";
 pacman -S grub;
 grub-install $disk_1;
-grub-mkconfig -o /boot/grub/grub.cfg;;
+grub-mkconfig -o /boot/grub/grub.cfg;
+;;
 esac
 
 read -p "Would you like to install a GUI? This will make it so that you can graphically run applications and such as opposed to running a non-graphical server." yynn_1
@@ -283,10 +284,12 @@ echo "Installation finished.";
 echo "${RED}You must remove installation medium now. Do it quickly.";
 echo "${GREEN}The system will now exit chroot and shut down. Thank you for using the Arch EasyInstaller script! Visit https://oneneterprisestech.github.io/html/packages.html to view other packages for Linux."
 exit;
-shutdown now;;;
+shutdown now;
+;;
 [Nn]* ) echo "Alright. That means that installation should be finished.";
 echo "${RED}You must remove the installation medium. Do it quickly.";
-reboot;;
+reboot;
+;;
 * ) echo "You must choose Y or N.";;
 esac
 

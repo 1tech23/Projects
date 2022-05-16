@@ -1,76 +1,74 @@
 <!DOCTYPE html>
 <html lang="en-US">
-  <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects by Logan Alldredge</title>
-    <link rel="shortcut icon" type="image/png" href="/img/flipai.png"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
-</head>
-<body>
-      <div class="tab" style="text-align:center">
-    <button class="tablinks"><a href="https://oneenterprisestech.github.io">................................OneEnterprises.Tech Homepage................................</a></button>
-    </div>
-      <script>
-function openUs(evt, usType) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(usType).style.display = "block";
-  evt.currentTarget.className += " active";
-}
-</script>
-   <header>
-    <div id="top-header">
-      <div id="header-image-menu">
-        <img src="/img/banner.png">
-    </div>
-      </div>
-	   </div>
-	</div>
-	</div>
-    </header>
-  <h1>List of Packages by Logan Alldredge</h1>
-  <div align="left">
-	  <div>
-		  <a href="bash/easyinstall.sh">Arch EasyInstaller Script</a>
-	  </div>
-	  <div>
-		  <a href="bash/packageinstall-debian.sh">Debian-based Package Installer</a>
-	  </div>
-	  <div>
-	  </div>
-  </div>
-<h1>Newest Features</h1>
-<div align="left">
- <div>
-            <p><a href="/arch-mirror.wy.us/index.html">Arch Linux Mirror</a> - Added 4/11/22 - Project Completion Status: Incomplete</p>
-        </div>
-    <div>
-    </div>
-    <div>
-     <p><a href="/html/answers.html">Cheatsheets and Answers</a>  - Added 4/13/22 - Project Completion Status: Other things are periodically added. Complete.</p>
-    </div>
-    <div>
-	    <p><a href="bash/packageinstall-debian.sh">Package Installer for Debian-Based Linux systems (Debian, Ubuntu, etc.)</a> - Added4/14/22 - Project Completion Status: Incomplete</p>
-    </div>
-  </div>
-</div>
-	  <script src="https://utteranc.es/client.js"
-        repo="oneenterprisestech/oneenterprisestech.github.io"
-        issue-term="title"
-        label="Comment"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-	</script>
-  <footer>
-    &copy; 2022 OneEnterprises.Tech
-  </footer>
-  </body>
+	<head>
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Projects by Logan Alldredge</title>
+	  <link rel="shortcut icon" type="image/png" href="/img/flipai.png" />
+	  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+	  <link rel="stylesheet" type="text/css" href="/css/hero_1.css" />
+	</head>
+	<body>
+		<!--<div class="tab" style="text-align:center">
+			<button class="tablinks"><a href="https://oneenterprisestech.github.io">................................OneEnterprises.Tech Homepage................................</a></button>
+		</div>
+		<script src="/js/navbar.js"></script>-->
+		<div id="home">
+			<section class="hero">
+				<div class="hero-inner">
+					<div>
+						<a href="/index.html" class="btn">Back to the Homepage</a>
+					</div>
+					<div>
+						<a href="#packages" class="btn">See Package List</a>
+					</div>
+				</div>
+			</section>
+		</div>
+		<div id="home">
+			<section class="hero2">
+				<div class="hero-inner-2">
+					<h1>List of Packages by Logan Alldredge</h1>
+					<div align="left">
+	 					 <div>
+		  					<a href="bash/easyinstall.sh">Arch EasyInstaller Script</a>
+	  					</div>
+	  					<div>
+		 					 <a href="bash/packageinstall-debian.sh">Debian-based Package Installer</a>
+	  					</div>
+					</div>
+					<a href="#new" class="btn">Newest Features</a>
+				</div>
+			</section>
+		</div>
+		<div id="new">
+			<section class="hero3">
+				<div="hero-inner-3">
+					<div align="left">
+						<div>
+							<p><a href="/arch-mirror.wy.us/index.html">Arch Linux Mirror</a> - Added 4/11/22 - Project Completion Status: Incomplete</p>
+						</div>
+						<div>
+							<p><a href="/html/answers.html">Cheatsheets and Answers</a>  - Added 4/13/22 - Project Completion Status: Other things are periodically added. Complete.</p>
+						</div>
+						<div>
+							<p><a href="bash/packageinstall-debian.sh">Package Installer for Debian-Based Linux systems (Debian, Ubuntu, etc.)</a> - Added4/14/22 - Project Completion Status: Incomplete</p>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<script src="https://utteranc.es/client.js"
+        		repo="oneenterprisestech/oneenterprisestech.github.io"
+        		issue-term="title"
+        		label="Comment"
+        		theme="github-dark"
+        		crossorigin="anonymous"
+        		async>
+		</script>
+		<footer>
+	  		<small>
+    				&copy; 2022 OneEnterprises.Tech
+			</small>
+		</footer>
+	</body>
 </html>

@@ -1,4 +1,11 @@
 #!/bin/bash
+echo "You should know that you must be root to run this file. Either enter command su and enter your root password, or add *sudo* before the command you used to run this tool. Press ctrl+c to cancel, or press Y to continue."
+read -p "Continue?" continue
+case $continue in
+[Yy]* ) echo "Continuing...";; 
+[Nn]* ) echo "Stopping program..."; exit;;
+esac
+
 
 echo "Welcome to the Cool File Installer! This will allow you to select packages to install from a list of installable extras for Debian."
 echo "The list of administration utilities (the ones that start with a number or A) will show below. Select a number to install"

@@ -1,10 +1,10 @@
 #!/bin/bash
 
 echo "Welcome to the Arch EasyInstall script."
-echo "${RED}If you do not understand Linux filesystem commands (fdisk), do not continue. Press control + c to stop at any time."
-echo "${RED}Since this program is new, commands are very delicate. When you enter a value, YOU MUST DOUBLE CHECK THE ANSWERS YOU MAKE! **deep voice** You have been warned... (-'_'-)"
+echo ${RED}"If you do not understand Linux filesystem commands (fdisk), do not continue. Press control + c to stop at any time."
+echo ${RED}"Since this program is new, commands are very delicate. When you enter a value, YOU MUST DOUBLE CHECK THE ANSWERS YOU MAKE! **deep voice** You have been warned... (-'_'-)"
 echo "Created by Logan Alldredge, owner and proprietor of One Enterprises Tech."
-echo -e "${RED}Warning: This will delete all data on a partition of your computer. Make sure to choose wisely when it is time to set up and delete partitions. Press ctrl + c to cancel this program at any time."
+echo -e ${RED}"Warning: This will delete all data on a partition of your computer. Make sure to choose wisely when it is time to set up and delete partitions. Press ctrl + c to cancel this program at any time."
 read -p "I understand the risks of running this program. I accept that the creator of this program cannot be held liable to any problems that this program may cause. Do you understand? Y or N" yn_1
 echo "Continuing with the program."
 

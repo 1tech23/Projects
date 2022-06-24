@@ -1,3 +1,6 @@
+#Publish Folder to GitHub Tool
+Just bash it. Nothing else to do, other than you will have to choose a commit name.
+
 # EasyInstaller
 Note: Before running the program, the user _must_ set up WiFi.
 

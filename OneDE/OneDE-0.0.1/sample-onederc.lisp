@@ -1,8 +1,8 @@
 ;; -*-lisp-*-
 ;;
-;; Here is a sample .stumpwmrc file
+;; Here is a sample .onederc file
 
-(in-package :stumpwm)
+(in-package :onede)
 
 ;; change the prefix key to something else
 (set-prefix-key (kbd "C-z"))

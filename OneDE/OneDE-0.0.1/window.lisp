@@ -1,13 +1,13 @@
-;; Copyright (C) 2003-2008 Shawn Betts
+;; Copyright (C) 2022 Logan Alldredge
 ;;
-;;  This file is part of stumpwm.
+;;  This file is part of onede.
 ;;
-;; stumpwm is free software; you can redistribute it and/or modify
+;; onede is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 2, or (at your option)
 ;; any later version.
 
-;; stumpwm is distributed in the hope that it will be useful,
+;; onede is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
@@ -22,7 +22,7 @@
 ;;
 ;; Code:
 
-(in-package #:stumpwm)
+(in-package #:onede)
 
 (export '(*default-window-name*
           define-window-slot
@@ -140,7 +140,7 @@ _NET_WM_STATE_DEMANDS_ATTENTION set"
             (and (screen-urgent-windows (current-screen))
                  (focus-all (first (screen-urgent-windows (current-screen))))))
 
-;; Since StumpWM already uses the term 'group' to refer to Virtual Desktops,
+;; Since OneDE already uses the term 'group' to refer to Virtual Desktops,
 ;; we'll call the grouped windows of an application a 'gang'
 
 ;; maybe follow transient_for to find leader.
@@ -647,7 +647,7 @@ and bottom_end_x."
     (setf (window-parent window) master-window)))
 
 (defun process-existing-windows (screen)
-  "Windows present when stumpwm starts up must be absorbed by stumpwm."
+  "Windows present when onede starts up must be absorbed by onede."
   (let ((children (xlib:query-tree (screen-root screen)))
         (*processing-existing-windows* t)
         (stacking (xlib:get-property (screen-root screen) :_NET_CLIENT_LIST_STACKING :type :window)))
@@ -1102,9 +1102,9 @@ formatting. This is a simple wrapper around the command @command{windowlist}."
                (let ((sym (cond ((<= 32 (char-code ch) 127)
                                  (char-code ch))
                                 ((char= ch #\Tab)
-                                 (stumpwm-name->keysym "TAB"))
+                                 (onede-name->keysym "TAB"))
                                 ((char= ch #\Newline)
-                                 (stumpwm-name->keysym "RET"))
+                                 (onede-name->keysym "RET"))
                                 (t (first (xlib:character->keysyms ch *display*))))))
                  (when sym
                    (send-fake-key window

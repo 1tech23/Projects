@@ -1,6 +1,6 @@
-;;; a dumping spot for window stuff that has tiling stuff in it
+;;; a dumping spot for window stuff that has tiling stuff in it... An excessive amount of stuff! So stuff it and keep doing your... Stuff.
 
-(in-package :stumpwm)
+(in-package :onede)
 
 (export '(*ignore-wm-inc-hints*))
 

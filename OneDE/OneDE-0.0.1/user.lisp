@@ -1,13 +1,13 @@
-;; Copyright (C) 2003-2008 Shawn Betts
+;; Copyright (C) 2022 Logan Alldredge
 ;;
-;;  This file is part of stumpwm.
+;;  This file is part of onede.
 ;;
-;; stumpwm is free software; you can redistribute it and/or modify
+;; onede is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
 ;; the Free Software Foundation; either version 2, or (at your option)
 ;; any later version.
 
-;; stumpwm is distributed in the hope that it will be useful,
+;; onede is distributed in the hope that it will be useful,
 ;; but WITHOUT ANY WARRANTY; without even the implied warranty of
 ;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ;; GNU General Public License for more details.
@@ -18,11 +18,11 @@
 
 ;; Commentary:
 ;;
-;; Window Manager commands that users can use to manipulate stumpwm.
+;; Window Manager commands that users can use to manipulate onede.
 ;;
 ;; Code:
 
-(in-package :stumpwm)
+(in-package :onede)
 
 (export '(defprogram-shortcut
           pathname-is-executable-p
@@ -47,7 +47,7 @@ menu, the error is re-signalled."
                                                    r))
                                            ;; a crusty way to get only
                                            ;; the restarts from
-                                           ;; stumpwm's top-level
+                                           ;; onede's top-level
                                            ;; restart inward.
                                            (reverse (member 'top-level
                                                             (reverse (compute-restarts))
@@ -164,8 +164,8 @@ with base. Automagically update the cache."
 (defcommand run-shell-command (cmd &optional collect-output-p) ((:shell "/bin/sh -c "))
   "Run the specified shell command. If @var{collect-output-p} is @code{T}
 then run the command synchonously and collect the output. Be
-careful. If the shell command doesn't return, it will hang StumpWM. In
-such a case, kill the shell command to resume StumpWM."
+careful. If the shell command doesn't return, it will hang OneDE. In
+such a case, kill the shell command to resume OneDE."
   (if collect-output-p
       (run-prog-collect-output *shell-program* "-c" cmd)
       (run-prog *shell-program* :args (list "-c" cmd) :wait nil)))
@@ -188,7 +188,7 @@ such a case, kill the shell command to resume StumpWM."
 (defcommand echo (string) ((:rest "Echo: "))
   "Display @var{string} in the message bar."
   ;; The purpose of echo is always to pop up a message window.
-  (let ((*executing-stumpwm-command* nil))
+  (let ((*executing-onede-command* nil))
     (message "~a" string)))
 
 (defun send-meta-key (screen key)
@@ -197,11 +197,11 @@ such a case, kill the shell command to resume StumpWM."
     (send-fake-key (screen-current-window screen) key)))
 
 (defcommand meta (key) ((:key "Key: "))
-"Send a fake key to the current window. @var{key} is a typical StumpWM key, like @kbd{C-M-o}."
+"Send a fake key to the current window. @var{key} is a typical OneDE key, like @kbd{C-M-o}."
   (send-meta-key (current-screen) key))
 
 (defcommand loadrc () ()
-"Reload the @file{~/.stumpwmrc} file."
+"Reload the @file{~/.onederc} file."
   (handler-case
       (progn
         (with-restarts-menu (load-rc-file nil)))
@@ -224,12 +224,12 @@ such a case, kill the shell command to resume StumpWM."
 
 
 (defcommand quit () ()
-"Quit StumpWM."
+"Quit OneDE. Make it kick the bucket?????)"
   (throw :top-level :quit))
 
 (defcommand restart-soft () ()
-  "Soft Restart StumpWM. The lisp process isn't restarted. Instead,
-control jumps to the very beginning of the stumpwm program. This
+  "Soft Restart OneDE. The lisp process isn't restarted. Instead,
+control jumps to the very beginning of the OneDE program. This
 differs from RESTART, which restarts the unix process.
 
 Since the process isn't restarted, existing customizations remain
@@ -237,7 +237,7 @@ after the restart."
   (throw :top-level :restart))
 
 (defcommand restart-hard () ()
-  "Restart stumpwm. This is handy if a new stumpwm executable has been
+  "Restart onede. This is handy if a new onede executable has been
 made and you wish to replace the existing process with it.
 
 Any run-time customizations will be lost after the restart."
@@ -300,7 +300,7 @@ instance. @var{all-groups} overrides this default. Similarily for
                     (first matches))))
       (if win
           (if (eq (type-of (window-group win))
-                  'stumpwm.floating-group:float-group)
+                  'onede.floating-group:float-group)
               (focus-all win)
               (goto-win win))
           (run-shell-command cmd)))))
@@ -322,19 +322,19 @@ current frame instead of switching to the window."
         (run-shell-command cmd))))
 
 (defcommand reload () ()
-"Reload StumpWM using @code{asdf}."
-  (message "Reloading StumpWM...")
+"Reload OneDE using @code{asdf}."
+  (message "Reloading OneDE... It will die and then suddenly ressurect.")
   #+asdf (with-restarts-menu
-             (asdf:operate 'asdf:load-op :stumpwm))
-  #-asdf (message "^B^1*Sorry, StumpWM can only be reloaded with asdf (for now.)")
-  #+asdf (message "Reloading StumpWM...^B^2*Done^n."))
+             (asdf:operate 'asdf:load-op :onede))
+  #-asdf (message "^B^1*Sorry, OneDE can only be reloaded with asdf (for now.)")
+  #+asdf (message "Reloading OneDE...^B^2*Done^n."))
 
 (defcommand emacs () ()
   "Start emacs unless it is already running, in which case focus it."
   (run-or-raise "emacs" '(:class "Emacs")))
 
 (defcommand copy-unhandled-error () ()
-  "When an unhandled error occurs, StumpWM restarts and attempts to
+  "When an unhandled error occurs, OneDE restarts and attempts to
 continue. Unhandled errors should be reported to the mailing list so
 they can be fixed. Use this command to copy the unhandled error and
 backtrace to the X11 selection so you can paste in your email when
@@ -342,8 +342,8 @@ submitting the bug report."
   (if *last-unhandled-error*
       (progn
         (set-x-selection (format nil "~a~%~a" (first *last-unhandled-error*) (second *last-unhandled-error*)))
-        (message "Copied to clipboard."))
-      (message "There was no unhandled error!")))
+        (message "Copied to clipboard. Welp! Here we go again!"))
+      (message "There was no unhandled error! Is this good or bad??")))
 
 (defmacro defprogram-shortcut (name &key (command (string-downcase (string name)))
                                          (props `'(:class ,(string-capitalize command)))

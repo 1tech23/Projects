@@ -8,7 +8,7 @@
 ;; This redefines decod-wm-size-hints in clisp because "It seems clisp
 ;; tries to be sneaky and represent the min and max aspect ratios as a
 ;; ratio number, which works except when the 0/0 is how you specify
-;; that there is no aspect ratio, as mplayer/mpv/mplayer2 does."
+;; that there is no aspect ratio, as mplayer/mpv/mplayer2 does." The below link is for StumpWM, for now...
 ;; http://lists.gnu.org/archive/html/stumpwm-devel/2009-08/msg00025.html
 #+clisp
 (defun decode-wm-size-hints (vector)

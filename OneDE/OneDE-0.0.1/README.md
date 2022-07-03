@@ -1,7 +1,8 @@
 ![](https://stumpwm.github.io/images/stumpwm-logo-stripe.png)
+The above link is for StumpWM, not OneDE.
 # The Stump Window Manager
 ![](https://travis-ci.org/stumpwm/stumpwm.svg)
-Stumpwm is a window manager written entirely in Common Lisp. It
+OneDE is a window manager written entirely in Common Lisp. It
 attempts to be highly customizable while relying entirely on the
 keyboard for input. You will not find buttons, icons, title bars, tool
 bars, or any of the other conventional GUI widgets.
@@ -11,37 +12,34 @@ customizable lisp based systems.
 
 ## Philosophy 
 
-Stumpwm is a "everything-and-the-kitchen-sink WM" or "the emacs of
-WMs."
+OneDE
 
-**StumpWM:Windows::Emacs:Text**
-
-* StumpWM is
+* OneDE is
   * Hackable
   * A tileable window manager
   * Includes support for floats
   * Written in Common Lisp
   * Compatible with many lisp distributions
   * A Superior window managing experience 
-* StumpWM is *not*
+* OneDE is *not yet*
   * Minimalist
   * Narrow Scope
   * Configured by editing the source directly
   * A full blown desktop environment
 
-If you want a minimalist tiling window manager, then StumpWM is *not*
+If you want a minimalist tiling window manager, then OneDE is *not yet*
 what you're looking for.  The code base is ~15k sloc, the binaries
 produced are ~60mb.
 
-StumpWM manages windows the way emacs manages buffers, or the way
+OneDE manages windows the way emacs manages buffers, or the way
 screen manages terminals. If you want a flexible, customizable,
 hackable desktop experience, look no further.
 
-# Build & Start Stumpwm
+# Build & Start OneDE
 
 ## Prerequisites
 
-* a common lisp distribution.  sbcl, clisp, ccl and ecl all work (ecl must have been built with clx support, must use version >= 13.5.1 [see here for discussion](https://github.com/sabetts/stumpwm/issues/55)).
+* a common lisp distribution.  sbcl, clisp, ccl and ecl all work (ecl must have been built with clx support, must use version >= 13.5.1 [see here for discussion](https://github.com/oneenterprisestech/Projects/issues/2)
 * quicklisp (for obtaining the following dependencies, not needed if you use your distribution's package manager.)
 * clx
 * cl-ppcre
@@ -73,7 +71,7 @@ Then, in a repl:
 ```
 ## Building
 
-Building stumpwm from git requires that you build the configure script:
+Building onede from git requires that you build the configure script:
 ```
  autoconf
 ```
@@ -81,7 +79,7 @@ If there's already a configure script then just run it.
 ```
  ./configure
 ```
-By default stumpwm selects sbcl.  If you have multiple lisps installed,
+By default onede selects sbcl.  If you have multiple lisps installed,
 you can explicitly select clisp, ccl, or ecl like so:
 ```
  ./configure --with-lisp=clisp
@@ -96,7 +94,7 @@ Now build it:
 ```
  make
 ```
-If all goes well, you should have a stumpwm binary now.  You can run
+If all goes well, you should have a onede binary now.  You can run
 the binary from where it is or install it, along with the .info
 documentation, with:
 ```
@@ -104,16 +102,16 @@ documentation, with:
 ```
 Now that you have a binary, call it from your ~/.xinitrc file:
 ```
- echo /path/to/stumpwm >> ~/.xinitrc
+ echo /path/to/onede >> ~/.xinitrc
  startx
 ```
-Hopefully that will put you in X running stumpwm! See [StartUp on the
-wiki](https://github.com/sabetts/stumpwm/wiki/StartUp) for more
+Hopefully that will put you in X running onede! See [StartUp on the
+wiki](https://github.com/oneenterprisestech/Projects/wiki/OneDE---StartUp) for more
 examples.
 
 ## Requirements for multiple monitor setups
 
-For stumpwm to work as intended with multiple monitors setups the 
+For onede to work as intended with multiple monitors setups the 
 `xdpyinfo` utility is needed.
 
 # Contributing
@@ -128,7 +126,7 @@ that your contribution gets merged in a timely manner:
     follow this all the time, so don't use it as an example
   * [Use lisp idioms](http://people.ace.ed.ac.uk/staff/medward2/class/moz/cm/doc/contrib/lispstyle.html)
   * If you are working on a major change to the internals, keep us
-    informed on stumpwm-devel! Also, it will probably help if the
+    informed on onede-devel! Also, it will probably help if the
     changes are made and then incrementally applied to the codebase in
     order to avoid introducing show-stopping bugs.
 * Do not's
@@ -150,7 +148,7 @@ link to it in a more logical place.
 # Wishlist 
 
 Fancy yourself a lisp hacker? Here's a wishlist of features for the
-StumpWM universe (in no particular order):
+OneDE universe (in no particular order):
 * float-splits (ie allow floating windows over tiled ones)
 * Float windows within parent applications (specifically dialogs in
   gimp or firefox).
@@ -161,9 +159,9 @@ StumpWM universe (in no particular order):
   * Killing windows
   * Marking windows for batch operations
   * Deleting/adding groups
-  * Import data from stumpwm to emacs, use an emacs minor mode to
-    implement the above features, then export the data back to stumpwm
-    and let stumpwm perform the appropriate actions 
+  * Import data from onede to emacs, use an emacs minor mode to
+    implement the above features, then export the data back to onede
+    and let onede perform the appropriate actions 
 * Emacs' completing-read-multiple function
 * Dynamic tiling
 * Lock Screen (with support for leaving notes, bonus points if emacs
@@ -190,17 +188,17 @@ http://ccl.clozure.com/manual/chapter15.1.html for an explanation.
 
 # Help
 
-There's a texinfo manual, stumpwm.texi.  The build scripts generate an
+There's a texinfo manual, onede.texi.  The build scripts generate an
 info file you can read in emacs or with the `info' program.  The
 manual for the latest git version (may be slightly out of date) is
-available to read online at: [The Manual](https://stumpwm.github.io/)
+available to read online at: [The Manual](https://onede.github.io/Projects/OneDE/manual)
 
 And, as in emacs, you can always do "C-t h v,f,k,c,w" for docstrings
 of Variable,Functions,Keys,Commands, and Where-is respectively.
 
-For other stuff (tips tricks and examples) visit the [stumpwm wiki](https://github.com/stumpwm/stumpwm/wiki)
+For other stuff (tips tricks and examples) visit the [onede wiki](https://github.com/oneenterprisestech/Projects/wiki)
 
-There's a #stumpwm channel on irc.freenode.net, too.
+There's a #stumpwm (not OneDE, unfortuately) channel on irc.freenode.net, too.
 
 Finally, there's our mailing list (click to sign up)
 [stumpwm-devel@nongnu.org](https://lists.nongnu.org/mailman/listinfo/stumpwm-devel).

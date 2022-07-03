@@ -1,0 +1,71 @@
+LISP=@LISP_PROGRAM@
+
+clisp_BUILDOPTS=-K base -on-error exit < ./make-image.lisp
+sbcl_BUILDOPTS=--load ./make-image.lisp
+ccl_BUILDOPTS=--load ./make-image.lisp
+ecl_BUILDOPTS=-shell ./make-image.lisp
+lw_BUILDOPTS=-build ./make-image.lisp
+
+clisp_INFOOPTS=-K base -on-error exit -x "(load (compile-file \"load-onede.lisp\")) (load (compile-file \"manual.lisp\")) (onede::generate-manual) (ext:exit)"
+sbcl_INFOOPTS=--eval "(progn (load \"load-onede.lisp\") (load \"manual.lisp\"))" --eval "(progn (onede::generate-manual) (sb-ext:quit))"
+ccl_INFOOPTS=--eval "(load \"load-onede.lisp\")" --load manual.lisp --eval "(progn (onede::generate-manual) (quit))"
+ecl_INFOOPTS=-eval "(progn (load \"load-onede.lisp\") (load \"manual.lisp\"))" -eval "(progn (onede::generate-manual) (ext:quit))"
+lw_INFOOPTS=-eval "(progn (load \"load-onede.lisp\") (load \"manual.lisp\"))" -eval "(progn (onede::generate-manual) (lw:quit))"
+
+datarootdir = @datarootdir@
+prefix=@prefix@
+exec_prefix= @exec_prefix@
+bindir=@bindir@
+infodir=@infodir@
+
+# You shouldn't have to edit past this
+
+FILES=onede.asd $(shell grep -o ":file \".*\"" onede.asd | sed 's,:file ",,g' | sed 's,",.lisp,g' )
+
+all: onede onede.info
+
+travis: onede
+onede.info: onede.texi
+	makeinfo onede.texi
+
+# FIXME: This rule is too hardcoded
+onede.texi: onede.texi.in
+	$(LISP) $(@LISP@_INFOOPTS)
+
+onede: $(FILES)
+	$(LISP) $(@LISP@_BUILDOPTS)
+
+release:
+	git tag -a -m "version @PACKAGE_VERSION@" @PACKAGE_VERSION@
+	git archive --format=tar --prefix=onede-@PACKAGE_VERSION@/ HEAD > onede-@PACKAGE_VERSION@.tar
+	tar xf onede-@PACKAGE_VERSION@.tar
+	cd onede-@PACKAGE_VERSION@ && tar zxf @PPCRE_PATH@/../cl-ppcre.tar.gz && mv cl-ppcre-* cl-ppcre
+	git log > onede-@PACKAGE_VERSION@/ChangeLog
+	cp configure onede-@PACKAGE_VERSION@/
+	tar zcf onede-@PACKAGE_VERSION@.tgz onede-@PACKAGE_VERSION@
+	rm -fr onede-@PACKAGE_VERSION@/ onede-@PACKAGE_VERSION@.tar
+
+upload-release:
+	gpg -b onede-@PACKAGE_VERSION@.tgz
+	scp onede-@PACKAGE_VERSION@.tgz onede-@PACKAGE_VERSION@.tgz.sig sabetts@dl.sv.nongnu.org:/releases/onede/
+	( echo rm onede-latest.tgz.sig && echo rm onede-latest.tgz && echo ln onede-@PACKAGE_VERSION@.tgz onede-latest.tgz && echo ln onede-@PACKAGE_VERSION@.tgz.sig onede-latest.tgz.sig ) | sftp -b - sabetts@dl.sv.nongnu.org:/releases/onede/
+
+clean:
+	rm -f *.fasl *.fas *.lib *.*fsl
+	rm -f *.log *.fns *.fn *.aux *.cp *.ky *.log *.toc *.pg *.tp *.vr *.vrs
+	rm -f onede onede.texi onede.info
+
+install: onede.info onede
+	test -z "$(destdir)$(bindir)" || mkdir -p "$(destdir)$(bindir)"
+	install -m 755 onede "$(destdir)$(bindir)"
+	test -z "$(destdir)$(infodir)" || mkdir -p "$(destdir)$(infodir)"
+	install -m 644 onede.info "$(destdir)$(infodir)"
+	install-info --info-dir="$(destdir)$(infodir)" "$(destdir)$(infodir)/onede.info"
+install-modules:
+	git clone https://github.com/onede/onede-contrib.git ~/.onede.d/modules
+uninstall:
+	rm "$(destdir)$(bindir)/onede"
+	install-info --info-dir="$(destdir)$(infodir)" --remove "$(destdir)$(infodir)/onede.info"
+	rm "$(destdir)$(infodir)/onede.info"
+
+# End of file

@@ -1,4 +1,4 @@
-#Publish Folder to GitHub Tool
+# Publish Folder to GitHub Tool
 Just bash it. Nothing else to do, other than you will have to choose a commit name.
 
 # EasyInstaller

@@ -67,11 +67,9 @@ A change in color, or presentation in general, is started by a ^. If that
     "yellow"
     "blue"
     "magenta"
-    "cyan"
     "white"
-    "purple"
     "gray")
-  "Ten colors by default. You can redefine these to whatever you like and
+  "Eight colors by default. You can redefine these to whatever you like and
 then call (update-color-map).")
 
 (defun adjust-color (color amt)

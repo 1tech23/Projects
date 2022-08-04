@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Sprig Logo
+Description=A theme that features an animated OneSprig logo. For testing ideas for OneOS.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/sprig-logo
+ScriptFile=/usr/share/plymouth/themes/mint-logo/sprig-logo.script

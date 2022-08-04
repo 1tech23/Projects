@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=Kone Logo
+Description=A theme that features an animated KoneOS logo. For testing ideas for OneOS.
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/kone-logo
+ScriptFile=/usr/share/plymouth/themes/mint-logo/kone-logo.script

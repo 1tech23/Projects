@@ -1,0 +1,25 @@
+Package: virtualbox-6.1
+Version: 6.1.36-152435~Ubuntu~jammy
+Architecture: amd64
+Maintainer: Oracle Corporation <info@virtualbox.org>
+Installed-Size: 218163
+Pre-Depends: debconf (>= 1.1) | debconf-2.0
+Depends: psmisc, adduser, libc6 (>= 2.34), libcurl4 (>= 7.16.2), libdevmapper1.02.1 (>= 2:1.02.97), libgcc-s1 (>= 3.0), libgl1, libopus0 (>= 1.1), libpng16-16 (>= 1.6.2-1), libqt5core5a (>= 5.15.1), libqt5gui5 (>= 5.14.1) | libqt5gui5-gles (>= 5.14.1), libqt5opengl5 (>= 5.0.2), libqt5printsupport5 (>= 5.0.2), libqt5widgets5 (>= 5.15.1), libqt5x11extras5 (>= 5.6.0), libsdl1.2debian (>= 1.2.11), libssl3 (>= 3.0.0~~alpha1), libstdc++6 (>= 11), libvpx7 (>= 1.10.0), libx11-6, libxcb1, libxcursor1 (>> 1.1.2), libxext6, libxml2 (>= 2.7.4), libxt6, zlib1g (>= 1:1.1.4)
+Recommends: libasound2, libpulse0, libsdl-ttf2.0-0, kmod | kldutils | module-init-tools, linux-headers-generic | linux-headers-generic-pae | linux-headers-686-pae | linux-headers-amd64 | linux-headers-2.6-686 | linux-headers-2.6-amd64 | linux-headers, linux-image, gcc, make | build-essential | dpkg-dev, binutils, pdf-viewer
+Conflicts: virtualbox, virtualbox-guest-additions-iso, virtualbox-ose, virtualbox-qt
+Replaces: virtualbox
+Provides: virtualbox
+Filename: ./virtualbox-6.1_6.1.36-152435~Ubuntu~jammy_amd64.deb
+Size: 95831608
+MD5sum: b217b0600dc42a1675e108198f024c4d
+SHA1: 352e5072f85619ae4d82043d1d2a7e3ff37e1274
+SHA256: 5a66f180e220342eacbb7b3d111658949ccdd61588f017e880e74c5fc3d2d450
+Section: contrib/misc
+Priority: optional
+Description: Oracle VM VirtualBox
+ VirtualBox is a powerful PC virtualization solution allowing you to run a
+ wide range of PC operating systems on your Linux system. This includes
+ Windows, Linux, FreeBSD, DOS, OpenBSD and others. VirtualBox comes with a broad
+ feature set and excellent performance, making it the premier virtualization
+ software solution on the market.
+

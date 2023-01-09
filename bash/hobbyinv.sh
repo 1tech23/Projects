@@ -1,8 +1,5 @@
 #!/bin/bash
 
- tput setaf 1; echo "PLEASE READ ALL OF THE BELOW TEXT"
-
-
 echo "This executable bash script has been"
 echo "created by the One Projects,"
 echo "owned and operated by logan Alldredge"
@@ -35,3 +32,18 @@ echo "                                       "
 echo "If you wish to quit, press"
 echo "control + c at any time."
 
+echo "                                     "
+
+echo "We will now provide a list of hobbies to choose from, along with a shopping list:"
+
+case $hobby_list in
+[Fishing]* ) ;;
+[Cooking]* ) ;;
+[Photography]* ) ;;
+[Chess]* ) ;;
+[Guitar]* ) ;;
+[Running]* ) ;;
+[Snowboarding]* ) ;;
+[Boating]* ) ;;
+[Skiing]* ) ;;
+[Snowboarding]* ) ;;
